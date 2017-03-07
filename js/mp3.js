@@ -14,9 +14,9 @@ $("#p2 .btn_close").click(function(e){
     isplay = true;
 });
 
-var audioIndex = 0;//å½“å‰æ’­æ”¾ç¬¬å‡ é¦–
+var audioIndex = 0;//µ±Ç°²¥·ÅµÚ¼¸Ê×
 var singernum = 0;
-//å®šä¹‰åŠåˆå§‹åŒ–æ’­æ”¾å™¨
+//¶¨Òå¼°³õÊ¼»¯²¥·ÅÆ÷
 var a = audiojs.createAll({
   trackEnded: function() {
     var next = $('ol li.playing').next(); audioIndex++;
@@ -28,10 +28,10 @@ var a = audiojs.createAll({
     $(".boxlink").removeClass('playing');
     $(".mp3link"+audioIndex).addClass('playing');
     singernum = parseInt(audioIndex)+1;
-    $("#bgSinger img").attr("src","//game.gtimg.cn/images/mhzx/cp/a20170118song/bg_pop_singer"+singernum+".png");
+    $("#bgSinger img").attr("src","ossweb-img/bg_pop_singer"+singernum+".png");
   }
 });
-//æ’­æ”¾è®¡æ—¶å™¨
+//²¥·Å¼ÆÊ±Æ÷
 function mtimeupdate(currentTime) {
     var index = lrc.findLrc(currentTime);
     if (curIndex != index) {
@@ -51,7 +51,7 @@ var audio = a[0];
 $('ol li').first().addClass('playing');
 audio.load(first);
 
-//ç‚¹æ’­æ­Œæ›²
+//µã²¥¸èÇú
 $('ol li').click(function(e) {
   e.preventDefault();
   var liindex = $(this).index();
@@ -67,7 +67,7 @@ function clickfunc(liindex) {
   replay(audioIndex);
 };
 
-//ä¸‹ä¸€é¦–æ­Œæ›²
+//ÏÂÒ»Ê×¸èÇú
 $('#next').click(function() {
     var next = $('li.playing').next();audioIndex++;
     if (!next.length) {next = $('ol li').first();audioIndex = 0;} 
@@ -75,7 +75,7 @@ $('#next').click(function() {
     replay(audioIndex);
 });
 
-//ä¸Šä¸€é¦–æ­Œæ›²
+//ÉÏÒ»Ê×¸èÇú
 $('#prev').click(function() {
     var prev = $('li.playing').prev();audioIndex--;
     if (!prev.length) {prev = $('ol li').last();audioIndex = 3;} 
@@ -83,7 +83,7 @@ $('#prev').click(function() {
     replay(audioIndex);
 });
 
-//æš‚åœæ’­æ”¾
+//ÔİÍ£²¥·Å
 $('#pause').click(function(e) {
     e.preventDefault();
     audio.playPause();
@@ -96,27 +96,27 @@ $('#pause').click(function(e) {
     }
 });
 
-//æ’­æ”¾æ‰§è¡Œæ–¹æ³•
-var curIndex = 0;//å½“å‰ç¬¬curIndexå¥æ­Œè¯
-var lrc = null;//æ­Œè¯æ•°ç»„
-var lrcs = null;//æ­Œè¯æ•°ç»„
-var _LrcS = LrcS;//è®¿é—®jsonæ–‡ä»¶
-var interHandler = null;//å®šä¹‰è®¡æ—¶å™¨
+//²¥·ÅÖ´ĞĞ·½·¨
+var curIndex = 0;//µ±Ç°µÚcurIndex¾ä¸è´Ê
+var lrc = null;//¸è´ÊÊı×é
+var lrcs = null;//¸è´ÊÊı×é
+var _LrcS = LrcS;//·ÃÎÊjsonÎÄ¼ş
+var interHandler = null;//¶¨Òå¼ÆÊ±Æ÷
 
 function replay(audioIndex){ 
-  clearInterval(interHandler);//å…ˆæ¸…é™¤è®¡æ—¶å™¨
+  clearInterval(interHandler);//ÏÈÇå³ı¼ÆÊ±Æ÷
   interHandler = null;
-  $(".lrc_scroll").html(" ");//å…ˆæ¸…é™¤æ­Œè¯é¢æ¿
+  $(".lrc_scroll").html(" ");//ÏÈÇå³ı¸è´ÊÃæ°å
   $(".lrc_scroll").css("margin-top","0");
   isplay = false;
   $('#pause').removeClass('onplay');
   $(".boxlink").removeClass('playing');
   $(".mp3link"+audioIndex).addClass('playing');
   singernum = parseInt(audioIndex)+1;
-  $("#bgSinger img").attr("src","//game.gtimg.cn/images/mhzx/cp/a20170118song/bg_pop_singer"+singernum+".png");
+  $("#bgSinger img").attr("src","ossweb-img/bg_pop_singer"+singernum+".png");
   var currentTime = 0;
 
-  interHandler = setInterval(function(){//å¼€å§‹è®¡æ—¶
+  interHandler = setInterval(function(){//¿ªÊ¼¼ÆÊ±
       var proh = $(".progress").width();
       var scrh = $(".scrubber").width();
       var loadPercent = proh/scrh;
@@ -139,7 +139,7 @@ function replay(audioIndex){
       }
   });
   
-  //åœ¨é¢æ¿å±•ç¤ºjsonæ­Œè¯
+  //ÔÚÃæ°åÕ¹Ê¾json¸è´Ê
   function showLrc(lrcText) {
       lrc = new LrcS(lrcText, "LRC");
       var _txt = "";

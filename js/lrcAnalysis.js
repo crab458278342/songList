@@ -24,7 +24,7 @@
 			var timeRegExpArr = lyric.match(timeReg);
 			if(!timeRegExpArr)continue;
 
-			//±£´æ±ê×¼¸è´ÊÊı×é
+			//ä¿å­˜æ ‡å‡†æ­Œè¯æ•°ç»„
 			var clause = lyric.replace(timeReg,'');
 			this.lrcArray.push(clause);
 
@@ -34,7 +34,7 @@
 					sec = Number(String(t.match(/\:\d*/i)).slice(1));
 				var time = min * 60 + sec;
 
-				//±£´æ½âÎöºóµÄ¸è´ÊĞÅÏ¢¶ÔÏó
+				//ä¿å­˜è§£æåçš„æ­Œè¯ä¿¡æ¯å¯¹è±¡
 				lrcObj[time] = {
 					txt : clause,
 					index : this.lrcArray.length - 1 
@@ -45,8 +45,8 @@
 	};
 
 	/*
-	 * ¹¹Ôìº¯Êı
-	 * lrcStr - Ô­Ê¼¸è´Ê×Ö·û´®
+	 * æ„é€ å‡½æ•°
+	 * lrcStr - åŸå§‹æ­Œè¯å­—ç¬¦ä¸²
 	 * */
 	function Constructor (lrcStr,type){
 		this.lrcStr = lrcStr;	
@@ -57,8 +57,8 @@
 
 	_extend(Constructor.prototype,{
 		findLrc : function(second){
-			//ÕÒµ½±Èµ±Ç°Ê±¼äĞ¡,ÇÒÀëµÃ×î½üµÄÊ±¼ä
-			//ÒòÎª¸è´Ê¶¼ÊÇÔÚÊ±¼äÖ®ºóµÄ
+			//æ‰¾åˆ°æ¯”å½“å‰æ—¶é—´å°,ä¸”ç¦»å¾—æœ€è¿‘çš„æ—¶é—´
+			//å› ä¸ºæ­Œè¯éƒ½æ˜¯åœ¨æ—¶é—´ä¹‹åçš„
 			var min = 3;
 			for( var i in this.lrc){
 				if ( i < second &&   Math.abs(second - i) < Math.abs(second - min) ){
